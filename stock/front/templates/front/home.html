@@ -1,0 +1,51 @@
+<!-- home.html -->
+{% extends 'front/base.html' %}
+{% load custom_filter %}
+
+{% block css %}
+{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-8">
+            <h2>Top Crypto Stocks</h2>
+            <ul class="list-group">
+                {% for stock in top_crypto %}
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    {{ stock }}
+                    <span class="badge bg-success">{{ stock.Volume }}</span>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <h2>Nifty 50 Stocks</h2>
+        <ul class="list-group">
+            {% for stock in top_stocks %}
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                {{stock|ValueIn:"Company Name"}}
+                <span class="badge bg-success">{{ stock|ValueIn:"Last Price"}}</span>
+                <a href="{% url 'front:stock_detail' stock=stock|ValueIn:'Symbol' %}"> Open </a>
+
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <div class="col-md-4">
+        <h2>Top Stocks</h2>
+        <ul class="list-group">
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                 WIpro Name
+                <span class="badge bg-success">10000</span>
+            </li>
+        </ul>
+    </div>
+</div>
+{% endblock %}
+
+
+{% block js %}
+{% endblock %}
+

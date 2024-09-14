@@ -1,0 +1,43 @@
+<!-- home.html -->
+{% extends 'front/base.html' %}
+{% load custom_filter %}
+
+{% block css %}
+{% endblock %}
+
+{% block content %}
+<div class="row">
+<h1>Stock Data </h1>
+<table>
+    <thead>
+        <tr>
+            <th>Ticker</th>
+            <th>Open</th>
+            <th>High</th>
+            <th>Low</th>
+            <th>Close</th>
+            <th>Adjusted Close</th>
+            <th>Volume</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for stock in stock_detail %}
+        <tr>
+            <td>{{ stock.ticker }}</td>
+            <td>{{ stock.open }}</td>
+            <td>{{ stock.high }}</td>
+            <td>{{ stock.low }}</td>
+            <td>{{ stock.close }}</td>
+            <td>{{ stock.adjclose }}</td>
+            <td>{{ stock.volume|floatformat:2 }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+</div>
+{% endblock %}
+
+
+{% block js %}
+{% endblock %}
+
